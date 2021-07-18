@@ -4,4 +4,4 @@
 <IfModule !authz_core_module>
     Deny from all
 </IfModule>
-SetEnv CI_ENV production
+
