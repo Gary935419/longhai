@@ -41,13 +41,19 @@
                         </div>
                     </form>
                 </div>
-				<?php if ($ftid_op >= 1){ ?>
+				<?php if ($_SESSION['user_name'] === 'admin'){ ?>
 					<button class="layui-btn layui-card-header" style="float: right;margin-top: -40px;margin-right: 20px;"
 							onclick="xadmin.open('上传文件','<?= RUN . '/goods/goods_add' ?>',1000,600)"><i
 								class="layui-icon"></i>上传文件
 					</button>
+				<?php }else{ ?>
+					<?php if ($ftid_op >= 1){ ?>
+						<button class="layui-btn layui-card-header" style="float: right;margin-top: -40px;margin-right: 20px;"
+								onclick="xadmin.open('上传文件','<?= RUN . '/goods/goods_add' ?>',1000,600)"><i
+									class="layui-icon"></i>上传文件
+						</button>
+					<?php } ?>
 				<?php } ?>
-
                 <div class="layui-card-body ">
                     <table class="layui-table layui-form">
                         <thead>
