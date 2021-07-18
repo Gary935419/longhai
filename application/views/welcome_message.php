@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<tbody>
 						<tr>
 							<th>版权所有</th>
-							<td>龙海后台系统</td>
+							<td>Dalian Jiuyuan Technology Co., Ltd. </td>
 						</tr>
 						<tr>
 							<th>开发者</th>
