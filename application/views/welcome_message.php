@@ -41,14 +41,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 		</div>
-		<div class="layui-col-md12">
-			<div class="layui-card">
-				<div class="layui-card-header">企业Logo</div>
-				<div class="layui-card-body ">
-					<img style="width: 300px;" src="http://ryksa.dltqwy.com/static/images/logo.jpg">
-				</div>
-			</div>
-		</div>
+<!--		<div class="layui-col-md12">-->
+<!--			<div class="layui-card">-->
+<!--				<div class="layui-card-header">企业Logo</div>-->
+<!--				<div class="layui-card-body ">-->
+<!--					<img style="width: 300px;" src="http://ryksa.dltqwy.com/static/images/logo.jpg">-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
 	</div>
 </div>
 </div>
