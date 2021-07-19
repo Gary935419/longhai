@@ -34,26 +34,33 @@ class Goods extends CI_Controller
 		$end = isset($_GET['end']) ? $_GET['end'] : '';
 		$fname = isset($_GET['fname']) ? $_GET['fname'] : '';
 		$page = isset($_GET["page"]) ? $_GET["page"] : 1;
-		$member_info = $this->goods->getgoodsByname123($_SESSION['user_name']);
-		$rid = $member_info['rid'];
-		$ftidlist = $this->goods->gettidlist123($rid);
-		if (empty($ftidlist)){
-			$start = '2030-12-12';
-			$ftid = array();
-			$data["ftid_op"] = 0;
-		}else{
-			$data["ftid_op"] = 1;
-			foreach ($ftidlist as $k=>$v){
-				$ftid[] = $v['ftid'];
-			}
-		}
-        $allpage = $this->goods->getgoodsAllPage($fname,$start,$end,$ftid);
-        $page = $allpage > $page ? $page : $allpage;
+
+		if ($_SESSION['user_name'] == 'admin'){
+            $allpage = $this->goods->getgoodsAllPageadmin($fname,$start,$end);
+            $page = $allpage > $page ? $page : $allpage;
+            $list = $this->goods->getgoodsAllNewadmin($page,$fname,$start,$end);
+        }else{
+            $member_info = $this->goods->getgoodsByname123($_SESSION['user_name']);
+            $rid = $member_info['rid'];
+            $ftidlist = $this->goods->gettidlist123($rid);
+            if (empty($ftidlist)){
+                $start = '2030-12-12';
+                $ftid = array();
+                $data["ftid_op"] = 0;
+            }else{
+                $data["ftid_op"] = 1;
+                foreach ($ftidlist as $k=>$v){
+                    $ftid[] = $v['ftid'];
+                }
+            }
+            $allpage = $this->goods->getgoodsAllPage($fname,$start,$end,$ftid);
+            $page = $allpage > $page ? $page : $allpage;
+            $list = $this->goods->getgoodsAllNew($page,$fname,$start,$end,$ftid);
+        }
+
         $data["pagehtml"] = $this->getpage($page, $allpage, $_GET);
         $data["page"] = $page;
         $data["allpage"] = $allpage;
-        $list = $this->goods->getgoodsAllNew($page,$fname,$start,$end,$ftid);
-
         $data["fname"] = $fname;
         if (!empty($list)){
 			foreach ($list as $k=>$v){
