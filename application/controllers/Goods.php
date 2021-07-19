@@ -36,9 +36,10 @@ class Goods extends CI_Controller
 		$page = isset($_GET["page"]) ? $_GET["page"] : 1;
 
 		if ($_SESSION['user_name'] == 'admin'){
-            $allpage = $this->goods->getgoodsAllPageadmin($fname,$start,$end);
+			$data["ftid_op"] = 1;
+            $allpage = $this->goods->getgoodsAllPage($fname,$start,$end);
             $page = $allpage > $page ? $page : $allpage;
-            $list = $this->goods->getgoodsAllNewadmin($page,$fname,$start,$end);
+            $list = $this->goods->getgoodsAllNew($page,$fname,$start,$end);
         }else{
             $member_info = $this->goods->getgoodsByname123($_SESSION['user_name']);
             $rid = $member_info['rid'];
